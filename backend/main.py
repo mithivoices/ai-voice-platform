@@ -4,16 +4,27 @@ from pydantic import BaseModel
 from pathlib import Path
 import uuid
 
+# Internal modules
 from backend.tts import text_to_speech
 from backend.stt import speech_to_text
+from backend.llm.ollama_llm import OllamaLLM
 
-app = FastAPI(title="AI Voice Platform - Phase One")
+app = FastAPI(title="AI Voice Platform – Phase Two")
 
-# Ensure outputs directory exists
-OUTPUT_DIR = Path("outputs")
+# -----------------------
+# Global setup
+# -----------------------
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+OUTPUT_DIR = BASE_DIR / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# -------- TTS --------
+# Initialize LLM (can be swapped later)
+llm = OllamaLLM(model="llama3")
+
+# -----------------------
+# TTS – Text to Speech
+# -----------------------
 
 class TTSRequest(BaseModel):
     text: str
@@ -24,7 +35,9 @@ def tts_endpoint(request: TTSRequest):
     return FileResponse(audio_path, media_type="audio/wav")
 
 
-# -------- STT --------
+# -----------------------
+# STT – Speech to Text
+# -----------------------
 
 @app.post("/stt")
 def stt_endpoint(file: UploadFile = File(...)):
@@ -37,7 +50,9 @@ def stt_endpoint(file: UploadFile = File(...)):
     return {"text": text}
 
 
-# -------- COMBINED MODE --------
+# -----------------------
+# COMBINED – Voice Chat
+# -----------------------
 
 @app.post("/voice-chat")
 def voice_chat(file: UploadFile = File(...)):
@@ -47,12 +62,12 @@ def voice_chat(file: UploadFile = File(...)):
         buffer.write(file.file.read())
 
     # Step 1: Speech → Text
-    text = speech_to_text(input_audio)
+    user_text = speech_to_text(input_audio)
 
-    # Step 2: Logic (Phase One = echo)
-    response_text = f"You said: {text}"
+    # Step 2: LLM reasoning
+    ai_text = llm.generate(user_text)
 
     # Step 3: Text → Speech
-    output_audio = text_to_speech(response_text)
+    output_audio = text_to_speech(ai_text)
 
     return FileResponse(output_audio, media_type="audio/wav")
