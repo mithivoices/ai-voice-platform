@@ -1,18 +1,87 @@
-# Virtual environment
+# ================================
+# Virtual Environment
+# ================================
 venv/
-
-# Environment variables
 .env
+.env.local
+.env.production
 
-# Runtime audio
+# ================================
+# Python Cache & Build Artifacts
+# ================================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ================================
+# OS / Editor Files
+# ================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# ================================
+# Runtime Audio & Generated Media
+# ================================
 outputs/
 audio_responses/
 *.wav
+*.mp3
+*.m4a
+*.webm
 
-# Models (keep folders, ignore files)
+# ================================
+# AI Models (Heavy / Downloaded)
+# ================================
 models/**/*.onnx
 models/**/*.json
+models/**/*.bin
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
 
-# Python cache
-__pycache__/
-*.pyc
+# ================================
+# Temporary / Experimental Scripts
+# ================================
+test_*.py
+*_test.py
+list_*.py
+scratch_*.py
+experiment_*.py
+
+# ================================
+# Notes / References (Optional)
+# ================================
+*.txt
+*.md.bak
+
+# ================================
+# Node / Frontend (if present)
+# ================================
+node_modules/
+dist/
+build/
+
+# ================================
+# Logs & Reports
+# ================================
+logs/
+*.out
+coverage/
+
+# ================================
+# Docker
+# ================================
+docker-compose.override.yml
+
+# ================================
+# Supabase (future)
+# ================================
+.supabase/
