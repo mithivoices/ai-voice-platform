@@ -1,7 +1,7 @@
-from backend.llm.base import LLM
+from backend.llm.base import BaseLLM
 import google.generativeai as genai
 
-class GeminiLLM(LLM):
+class GeminiLLM(BaseLLM):
     def __init__(self, model: str = "gemini-pro"):
         self.model = genai.GenerativeModel(model)
 
