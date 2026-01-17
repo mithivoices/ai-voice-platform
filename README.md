@@ -1,9 +1,10 @@
 # Mithivoices
 
-![CI/CD](https://github.com/Aryanpanwar10005/ai-voice-platform/workflows/CI%2FCD%20Pipeline/badge.svg)
-![License](https://img.shields.io/github/license/Aryanpanwar10005/ai-voice-platform)
-![Version](https://img.shields.io/github/v/release/Aryanpanwar10005/ai-voice-platform)
-![Issues](https://img.shields.io/github/issues/Aryanpanwar10005/ai-voice-platform)
+![CI/CD](https://github.com/mithivoices/ai-voice-platform/workflows/CI%2FCD%20Pipeline/badge.svg)
+![License](https://img.shields.io/github/license/mithivoices/ai-voice-platform)
+![Version](https://img.shields.io/github/v/release/mithivoices/ai-voice-platform)
+![Issues](https://img.shields.io/github/issues/mithivoices/ai-voice-platform)
+
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 > Professional AI Voice Platform with Text-to-Speech and Speech-to-Text

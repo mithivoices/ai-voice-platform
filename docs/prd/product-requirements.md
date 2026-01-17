@@ -5,7 +5,7 @@
 **Document Owner:** Aryan Panwar | **Status:** Active Development  
 **Last Updated:** January 16, 2026 | **Version:** 2.1  
 **Target Launch:** Phase 2 Complete  
-**Repository:** https://github.com/Aryanpanwar10005/ai-voice-platform
+**Repository:** https://github.com/mithivoices/ai-voice-platform
 
 ---
 
@@ -743,7 +743,7 @@ Click Edit → Banner appears → Drag handles → Apply or Cancel
 
 ### 15.2 References
 
-- Repository: https://github.com/Aryanpanwar10005/ai-voice-platform
+- Repository: https://github.com/mithivoices/ai-voice-platform
 - Piper TTS: https://github.com/rhasspy/piper
 
 ---
