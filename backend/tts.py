@@ -11,17 +11,25 @@ VOICE_MODEL = os.getenv("PIPER_VOICE_MODEL", os.path.join(MODELS_DIR, "en_US-les
 VOICE_CONFIG = os.getenv("PIPER_VOICE_CONFIG", os.path.join(MODELS_DIR, "en_US-lessac-medium.onnx.json"))
 
 
-def synthesize_speech(text: str, output_path: str) -> None:
+def synthesize_speech(text: str, output_path: str, model_path: str = None) -> None:
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
+    # Determine model and config paths
+    if model_path:
+        current_voice_model = model_path
+        current_voice_config = model_path + ".json"
+    else:
+        current_voice_model = VOICE_MODEL
+        current_voice_config = VOICE_CONFIG
+
     # Check if model exists
-    if not os.path.exists(VOICE_MODEL):
-        raise RuntimeError(f"Voice model not found at: {VOICE_MODEL}\nPlease download it to models/tts/ or set PIPER_VOICE_MODEL env var.")
+    if not os.path.exists(current_voice_model):
+        raise RuntimeError(f"Voice model not found at: {current_voice_model}\nPlease download it to models/tts/ or set PIPER_VOICE_MODEL env var.")
 
     command = [
         PIPER_EXECUTABLE,
-        "--model", VOICE_MODEL,
-        "--config", VOICE_CONFIG,
+        "--model", current_voice_model,
+        "--config", current_voice_config,
         "--output_file", output_path,
     ]
 
