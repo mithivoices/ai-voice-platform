@@ -1,6 +1,12 @@
-# VoxAI - AI Voice Platform
+# Mithivoices
 
-Text-to-Speech platform with React frontend and Python FastAPI backend.
+![CI/CD](https://github.com/Aryanpanwar10005/ai-voice-platform/workflows/CI%2FCD%20Pipeline/badge.svg)
+![License](https://img.shields.io/github/license/Aryanpanwar10005/ai-voice-platform)
+![Version](https://img.shields.io/github/v/release/Aryanpanwar10005/ai-voice-platform)
+![Issues](https://img.shields.io/github/issues/Aryanpanwar10005/ai-voice-platform)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
+> Professional AI Voice Platform with Text-to-Speech and Speech-to-Text
 
 ## Project Structure
 
@@ -54,6 +60,7 @@ npm run dev
 ## ⚠️ Important Notes
 
 ### Voice Models
+
 Voice models are **NOT included** in this repository due to size constraints (~570 MB total).
 
 **You must download them separately:**
@@ -70,6 +77,7 @@ python3 download_models.py
 Models are downloaded from Hugging Face (Piper TTS project).
 
 ### First-Time Setup
+
 1. Clone repository (code only - ~10-50 MB)
 2. **Download voice models** (required - ~570 MB)
 3. Install dependencies
