@@ -1,32 +1,18 @@
-import google.generativeai as genai
-from app.core.config import settings
-import logging
+from app.services.llm import LLMFactory
+from app.services.llm.base import BaseLLM
 
-logger = logging.getLogger(__name__)
+# Convenience entry point for the rest of the app
+# Can be used as a singleton or factory wrapper
 
-class GeminiService:
-    def __init__(self):
-        if not settings.GEMINI_API_KEY:
-            logger.warning("GEMINI_API_KEY not set. Voice chat will not function correctly.")
-        else:
-            try:
-                genai.configure(api_key=settings.GEMINI_API_KEY)
-                self.model = genai.GenerativeModel('gemini-pro')
-            except Exception as e:
-                logger.error(f"Failed to configure Gemini: {e}")
-                self.model = None
+class LLMServiceWrapper:
+    """
+    High-level service that uses the factory to get the right provider.
+    """
+    def get_provider(self, provider_name: str = None) -> BaseLLM:
+        return LLMFactory.get_llm(provider_name)
 
-    async def generate_response(self, text: str) -> str:
-        if not settings.GEMINI_API_KEY or not hasattr(self, 'model') or not self.model:
-            logger.error("Gemini model not initialized")
-            return "I am unable to process your request because my brain is not configured."
-        
-        try:
-            # google-generativeai client is synchronous
-            response = self.model.generate_content(text)
-            return response.text
-        except Exception as e:
-            logger.error(f"Gemini generation error: {e}")
-            return "I'm sorry, I'm having trouble processing your request right now."
+    async def generate_response(self, text: str, provider: str = None, **kwargs) -> str:
+        llm = self.get_provider(provider)
+        return await llm.generate(text, **kwargs)
 
-llm_service = GeminiService()
+llm_service = LLMServiceWrapper()

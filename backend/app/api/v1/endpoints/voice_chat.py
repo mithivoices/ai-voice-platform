@@ -13,14 +13,14 @@ logger = logging.getLogger(__name__)
 @router.post("", response_model=dict)
 async def voice_chat(
     file: UploadFile = File(...),
+    llm_provider: str = Form("ollama"), # Default to ollama, can be 'gemini'
+    voice_id: str = Form(None)
 ):
     """
     Full pipeline: Audio Input -> STT -> LLM -> TTS -> Audio Output
     """
     try:
         # 1. Speech to Text
-        # We can reuse the transcribe logic. STT Service expects a file-like object or path?
-        # Let's check stt_service.transcribe_audio. It takes 'file: UploadFile'.
         transcript_result = await stt_service.transcribe_audio(file)
         user_text = transcript_result["text"]
         
@@ -28,20 +28,18 @@ async def voice_chat(
             return {
                 "user_text": "",
                 "ai_text": "I didn't hear anything.",
-                "audio_url": None
+                "audio_url": None,
+                "provider": llm_provider
             }
 
         # 2. LLM Generation
-        ai_text = await llm_service.generate_response(user_text)
+        # Use simple prompt for now, or maintain history context in frontend
+        ai_text = await llm_service.generate_response(user_text, provider=llm_provider)
 
         # 3. Text to Speech
-        # We need to pick a default voice. Let's look for a default or just pick the first one.
-        # Or maybe make it configurable later. For now, default to 'en_US-lessac-medium' or first available.
-        voices = tts_service.get_available_voices()
-        voice_id = "en_US-lessac-medium.onnx" # fallback default
-        if voices:
-            # Try to find a good default or just take the first one
-            voice_id = voices[0]["id"]
+        if not voice_id:
+             voices = tts_service.get_available_voices()
+             voice_id = voices[0]["id"] if voices else "default"
             
         # Generate audio
         tts_result = await tts_service.generate_audio(
@@ -54,7 +52,8 @@ async def voice_chat(
             "user_text": user_text,
             "ai_text": ai_text,
             "audio_url": tts_result["url"],
-            "duration": tts_result["duration"]
+            "duration": tts_result["duration"],
+            "provider": llm_provider
         }
 
     except Exception as e:

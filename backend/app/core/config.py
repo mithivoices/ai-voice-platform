@@ -12,7 +12,11 @@ class Settings(BaseSettings):
     MODEL_DIR: str = "../voice_assets"
     
     # LLM
+    DEFAULT_LLM_PROVIDER: str = "ollama"
+    OLLAMA_BASE_URL: str = "http://localhost:11434"
+    OLLAMA_DEFAULT_MODEL: str = "llama2"
     GEMINI_API_KEY: str = ""
+    GEMINI_DEFAULT_MODEL: str = "gemini-pro"
     
     class Config:
         env_file = ".env"
