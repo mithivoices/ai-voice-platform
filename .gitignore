@@ -334,3 +334,170 @@ docs/internal/
 # Large PDFs (keep in Google Drive/Notion)
 *.pdf
 !docs/design/*.pdf
+
+# ============================================
+# INTERNAL PLANNING & DEVELOPMENT DOCUMENTS
+# ============================================
+
+# Planning documents (keep in Notion/Google Docs)
+*Planning*
+*_Planning_*
+*planning*
+Planning_Summary*
+*_Summary.pdf
+
+# Phase checklists and tracking
+PHASE_*_CHECKLIST.md
+*_CHECKLIST.md
+phase_*.md
+checklist*.md
+
+# Internal documentation
+*.internal.md
+*_internal_*
+internal/
+docs/internal/
+.github/internal/
+
+# PRD drafts (keep only final in docs/prd/)
+PRD_Draft*
+*_PRD_Draft*
+prd_draft*
+
+# Meeting notes and minutes
+meeting_notes/
+meetings/
+*_meeting_*.md
+*_notes_*.md
+
+# Todo and task lists (use GitHub Issues instead)
+TODO.local.md
+TASKS.md
+*_TODO_*.md
+
+# Development logs and journals
+dev_log*.md
+development_journal*.md
+*_log_*.md
+
+# Performance drafts (keep only final in docs/)
+Performance_Draft*.md
+*_performance_draft*
+
+# Planning PDFs and presentations
+*.pdf
+!docs/design/*.pdf
+!docs/guides/*.pdf
+*.ppt
+*.pptx
+*.key
+
+# Excel planning sheets
+*.xlsx
+*.xls
+!docs/data/*.xlsx
+
+# Mind maps and diagrams (keep exported images only)
+*.xmind
+*.mmap
+*.drawio
+
+# Personal notes
+notes/
+Notes/
+personal_notes/
+scratch/
+scratchpad/
+
+# ============================================
+# VERSIONED INTERNAL DOCS
+# ============================================
+
+# Version-specific internal docs
+*_v0.1_internal*
+*_alpha_internal*
+*_beta_internal*
+
+# ============================================
+# INTERNAL PLANNING & DEVELOPMENT DOCUMENTS
+# ============================================
+
+# Planning documents (keep in Notion/Google Docs)
+*Planning*
+*_Planning_*
+*planning*
+Planning_Summary*
+*_Summary.pdf
+
+# Phase checklists and tracking
+PHASE_*_CHECKLIST.md
+*_CHECKLIST.md
+phase_*.md
+checklist*.md
+
+# Internal documentation
+*.internal.md
+*_internal_*
+internal/
+docs/internal/
+.github/internal/
+
+# PRD drafts (keep only final in docs/prd/)
+PRD_Draft*
+*_PRD_Draft*
+prd_draft*
+
+# Meeting notes and minutes
+meeting_notes/
+meetings/
+*_meeting_*.md
+*_notes_*.md
+
+# Todo and task lists (use GitHub Issues instead)
+TODO.local.md
+TASKS.md
+*_TODO_*.md
+
+# Development logs and journals
+dev_log*.md
+development_journal*.md
+*_log_*.md
+
+# Performance drafts (keep only final in docs/)
+Performance_Draft*.md
+*_performance_draft*
+
+# Planning PDFs and presentations
+*.pdf
+!docs/design/*.pdf
+!docs/guides/*.pdf
+*.ppt
+*.pptx
+*.key
+
+# Excel planning sheets
+*.xlsx
+*.xls
+!docs/data/*.xlsx
+
+# Mind maps and diagrams (keep exported images only)
+*.xmind
+*.mmap
+*.drawio
+
+# Personal notes
+notes/
+Notes/
+personal_notes/
+scratch/
+scratchpad/
+
+# ============================================
+# VERSIONED INTERNAL DOCS
+# ============================================
+
+# Version-specific internal docs
+*_v0.1_internal*
+*_alpha_internal*
+*_beta_internal*
+
