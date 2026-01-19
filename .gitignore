@@ -520,3 +520,8 @@ backend/models/*.onnx
 !voice_assets/*/LICENSES.md
 !voice_assets/*/voices.manifest.json
 
+
+# Local planning documents (not for public repo)
+SPRINT2-ACTION-PLAN.md
+AUDIT_REPORT_*.md
+TODO-*.md

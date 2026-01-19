@@ -1,4 +1,4 @@
-# VoxAI Backend - Python FastAPI
+# Mithivoices Backend - Python FastAPI
 
 Text-to-Speech API server using Piper TTS.
 
